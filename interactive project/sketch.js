@@ -5,27 +5,22 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let redAmount = 0;
-let redChangeAmount = 1;
-
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(0, 0, 0);
+  background(255);
+  stroke(0);
+  fill(0);
   }
 
 function draw() {
-  // fill(redAmount, 0, 255);
-  // noStroke();
-  // ellipse(mouseX, mouseY, 50, 50);
- 
-  // redAmount += redChangeAmount; 
-
-  // if (redAmount >= 255) { 
-  //   redChangeAmount *= -1;
-  // }
-
-  // console.log(redAmount);
-  // }
-
+  line(mouseX, mouseY, pmouseX, pmouseY);
+  if (keyIsPressed){
+    if (keyCode === UP_ARROW){
+      red = random(0, 255)
+      green = random(0, 255)
+      blue = random(0, 255)
+    }
+  }
+}
 
