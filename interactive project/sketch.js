@@ -1,4 +1,4 @@
-// Interactive Project
+// Interactive Project  - Tic Tac Toe
 // Jenna Doucette
 // September 12, 2019
 //
@@ -14,7 +14,7 @@ function setup() {
   }
 
 function draw() {
-  line(mouseX, mouseY, pmouseX, pmouseY);
+  line(30, 20, 85, 20);
   if (keyIsPressed){
     if (keyCode === UP_ARROW){
       red = random(0, 255)
