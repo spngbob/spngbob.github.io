@@ -9,6 +9,16 @@ let x;
 let y;
 let my;
 let mx;
+let mode;
+let counter;
+counter = 0
+
+function setUpLines(){
+  line(x-350, y+100, x+350, y+100 ); // horizontal line
+  line(x-350, y-125, x+350, y-125 ); // horizontal line
+  line(x-125, y-350, x-125, y+300 ); // vertical line
+  line(x + 100, y-350, x+100, y+300 ); // vertical line
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -20,20 +30,23 @@ function setup() {
 }
 
 function draw() {
-  line(x-350, y+100, x+350, y+100 ); // horizontal line
-  line(x-350, y-150, x+350, y-150 ); // horizontal line
-  line(x-125, y-350, x-125, y+300 ); // vertical line
-  line(x + 100, y-350, x+100, y+300 ); // vertical line
-  }
-
-  function keyPressed() {
-    if (keyCode === 88){  
-      line(mouseX-50, mouseY - 50, mouseX +50, mouseY +50);
-      line(mouseX + 50, mouseY - 50, mouseX -50 , mouseY + 50);}
-    
-    else if (keyCode === 79){
-      fill("white")
-      circle(mouseX, mouseY, 100)}
-
-    else if (keyCode === 32)  {}
+  setUpLines()
+  mode = "turnX"
+    if (mouseIsPressed === true){  
+      if (counter < 9){
+        console.log("turnX")
+        if (mode === "turnX"){
+          line(mouseX-50, mouseY - 50, mouseX +50, mouseY +50);
+          line(mouseX + 50, mouseY - 50, mouseX -50 , mouseY + 50);
+          counter = counter + 1;
+          mode = "turnY";
+        }
+        else if (mode === "turnY"){
+          fill("white");
+          circle(mouseX, mouseY, 100);
+          counter = counter + 1;
+          mode = "turnX";                                                                          
+        }
+      }
+    }
   }
