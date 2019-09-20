@@ -25,35 +25,59 @@ function setup() {
   y = windowHeight/2;
 }
 
+
+
+
+
 function setUpLines(){
-  line(x-350, y+100, x+350, y+100 ); // horizontal line
-  line(x-350, y-125, x+350, y-125 ); // horizontal line
-  line(x-125, y-350, x-125, y+300 ); // vertical line
-  line(x + 100, y-350, x+100, y+300 ); // vertical line
+  line(x-350, y+100, x+350, y+100 );         // horizontal line
+  line(x-350, y-125, x+350, y-125 );         // horizontal line
+  line(x-125, y-350, x-125, y+300 );         // vertical line
+  line(x + 100, y-350, x+100, y+300 );       // vertical line
 }
+
+
+
+
+
+function reset(){
+  clear();
+  background(255);
+  setUpLines();
+  counter = 0;
+  mode = "turnX";
+  
+}
+
+
+
+
 
 function draw() {
   setUpLines()
 }
 
 
+
+
 function mouseReleased(){
   if (counter < 9){  
     if (mode === "turnX"){
-      line(mouseX-50, mouseY - 50, mouseX +50, mouseY +50);
+      line(mouseX-50, mouseY - 50, mouseX +50, mouseY +50);               // alternates turn X
       line(mouseX + 50, mouseY - 50, mouseX -50 , mouseY + 50);
       counter++;
       mode = "turnY";
-    }
-    else if (mode === "turnY"){
+      console.log(counter)}
+
+    else if (mode === "turnY"){               // alternates turn Y
       fill("white");
       circle(mouseX, mouseY, 100);
       counter++;
-      mode = "turnX";}
-      if (keyIsPressed === true){
-        if (keyCode === DELETE){
-          clear();
-          mode = "turnX";}
+      mode = "turnX";
+      console.log(counter)}
     }
-}
+
+  else{
+    reset();
+  }
 }
