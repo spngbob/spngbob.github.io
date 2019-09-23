@@ -14,7 +14,8 @@ let counter;
 counter  = 0;
 mode = "turnX";
 
-
+let xturn = [];
+let yturn = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -25,7 +26,9 @@ function setup() {
   y = windowHeight/2;
 }
 
+function whoWins(){
 
+}
 
 
 
@@ -40,21 +43,19 @@ function setUpLines(){
 
 
 
-function reset(){
+function reset(){    // resetting the playing field
   clear();
   background(255);
-  setUpLines();
+  setUpLines(); 
   counter = 0;
   mode = "turnX";
-  
 }
 
 
 
 
-
 function draw() {
-  setUpLines()
+  setUpLines()          // sets up lines
 }
 
 
@@ -65,19 +66,28 @@ function mouseReleased(){
     if (mode === "turnX"){
       line(mouseX-50, mouseY - 50, mouseX +50, mouseY +50);               // alternates turn X
       line(mouseX + 50, mouseY - 50, mouseX -50 , mouseY + 50);
+      xturn.push(mouseX, mouseY)
       counter++;
       mode = "turnY";
-      console.log(counter)}
+      console.log(xturn);
+    }
 
     else if (mode === "turnY"){               // alternates turn Y
       fill("white");
       circle(mouseX, mouseY, 100);
+      yturn.push(mouseX, mouseY)
       counter++;
       mode = "turnX";
-      console.log(counter)}
+      console.log(yturn);
+    }
     }
 
   else{
-    reset();
+    // whoWins(); PUT THIS BACK IN EVENTUALLY 
+    if (keyIsPressed){
+      if (key === " "){   fix this broooo oo o o osadf4 53 34534 5345345 34 534 534 5
+        reset();
+      }
+    }  // resets to let them play again 
   }
 }
