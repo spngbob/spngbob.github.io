@@ -1,9 +1,15 @@
-// Interactive Project  - that bouncing ball game that destroys bricks
+// Interactive Project  - single person against no one table tennis???
 // Jenna Doucette
 // September 12, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
+
+function windowResized() {
+  resizeCanvas(windowWidth, WindowHeight);
+  background(0)
+}
+
 
 let x;
 let y;
@@ -19,13 +25,23 @@ let paddleHeight = 10;
 let paddleWidth = 75;
 let paddleX = (windowWidth-paddleWidth) / 2;
 
+
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   x = width/2;
   y = height/2;
-  dx = 5;
-  dy = 5;
+  dx = random(1, 5);
+  dy = random(1,5);
 }
+
+
+
+function paddle(){
+  rect(mouseX-50, windowHeight-100, 100, 10)
+
+}
+
 
 function bouncyBoi(){
   x += dx;
@@ -33,13 +49,32 @@ function bouncyBoi(){
   if (x > windowWidth - radius/2 || x < 0  + radius/2) {
     dx *= -1;
    }
-  if (y > windowHeight - radius/2 || y  < 0  + radius/2) {
-    dy *= -1; 
+  if (y  < 0  + radius/2) {
+    dy *= -1;}
+  
+  
+  if ( y > windowHeight - radius/2){
+    clear();
+    background(220, 20, 60);
+    textSize(40);
+    textFont('Georgia');
+    text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
+    text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
   }
-}
+  }
+
 
 function draw() {   // moving around + bouncing 
   background(0);
   circle(x, y, radius);
   bouncyBoi();
+  paddle();
+  if (x >= mouseX - 50 && x > mouseX + 50 && y === windowHeight- 100 ){
+    dy *= -1;
+  }
+}
+
+function keyIsPressed(){
+  clear();
+  background(0);
 }
