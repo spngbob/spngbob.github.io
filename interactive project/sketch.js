@@ -26,13 +26,18 @@ let paddleWidth = 75;
 let paddleX = (windowWidth-paddleWidth) / 2;
 
 
+function keyPressed(){
+  clear();
+  background(0);
+}
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   x = width/2;
   y = height/2;
-  dx = random(1, 5);
-  dy = random(1,5);
+  dx = random(-10, 10);
+  dy = random(-10, 10);
 }
 
 
@@ -60,6 +65,7 @@ function bouncyBoi(){
     textFont('Georgia');
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
     text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
+    keyPressed();
   }
   }
 
@@ -72,9 +78,4 @@ function draw() {   // moving around + bouncing
   if (x >= mouseX - 50 && x > mouseX + 50 && y === windowHeight- 100 ){
     dy *= -1;
   }
-}
-
-function keyIsPressed(){
-  clear();
-  background(0);
 }
