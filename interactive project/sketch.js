@@ -48,7 +48,7 @@ function paddle(){
 }
 
 
-function bouncyBoi(){  // making a ball bounce around
+function bouncyBoi(){
   x += dx;
   y += dy;
   if (x > windowWidth - radius/2 || x < 0  + radius/2) {
@@ -57,7 +57,8 @@ function bouncyBoi(){  // making a ball bounce around
   if (y  < 0  + radius/2) {
     dy *= -1;}
   
-  if ( y > windowHeight - radius/2){ // failure screen
+  
+  if ( y > windowHeight - radius/2){
     clear();
     background(220, 20, 60);
     textSize(40);
@@ -66,14 +67,10 @@ function bouncyBoi(){  // making a ball bounce around
     text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
     keyPressed();
   }
-
-  if (x === mouseX)
-
-
   }
 
 
-function draw() {   
+function draw() {   // moving around + bouncing 
   background(0);
   circle(x, y, radius);
   bouncyBoi();
