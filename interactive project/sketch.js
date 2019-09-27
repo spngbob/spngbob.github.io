@@ -58,7 +58,6 @@ function bouncyBoi(){
   
   if (x >= mouseX-50 && x <= mouseX + 50 && y > windowHeight-100){
     dy *= -1;
-
     myScore = myScore+1;
     textSize(40);
     textFont('Georgia');
@@ -94,6 +93,7 @@ function bouncyBoi(){
 function draw() {   // moving around + bouncing 
   background(0);
   circle(x, y, radius);
+  
   bouncyBoi();
   paddle();
 }
