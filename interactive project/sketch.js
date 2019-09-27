@@ -59,9 +59,13 @@ function bouncyBoi(){
     textFont('Georgia');
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
     text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
-    if  (keyPressed){
-      clear();
-      background(0);
+    if (keyIsPressed){ // clear
+      if (keyCode === SPACE){
+        background(0);
+        bouncyBoi();
+        paddle();
+        
+      }
     }
   }
   
