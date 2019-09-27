@@ -87,7 +87,7 @@ function draw() {   // moving around + bouncing
   circle(x, y, radius);
   bouncyBoi();
   paddle();
-  if (x >= mouseX - 50 && x > mouseX + 50 && y === windowHeight- 100 ){
+  if (x >= mouseX - 50 && x > mouseX + 50 && y > windowHeight- 100 ){
     dy *= -1;
   }
 }
