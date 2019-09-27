@@ -1,6 +1,6 @@
-// Interactive Project  - single person against no one table tennis???
+// Interactive Project  - single person against no one table tennis??? not a great time
 // Jenna Doucette
-// September 12, 2019
+// September 12, 2019 
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
