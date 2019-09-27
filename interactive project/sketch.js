@@ -60,10 +60,16 @@ function bouncyBoi(){
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
     text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
     if (keyIsPressed){ // clear
-      if (keyCode === SPACE){
+      if (keyCode === 32){
         background(0);
+        x = width/2;
+        y = height/2;
+        dx = random(1, 5);
+        dy = random(1, 5);
         bouncyBoi();
         paddle();
+        clear();
+        
         
       }
     }
