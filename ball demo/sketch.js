@@ -16,6 +16,8 @@ let b = 255;
 let rectS = 100
 let mode = "circle";
 
+let crack = 0;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -42,6 +44,7 @@ function draw() {   // moving around + bouncing
      y += dy;
     if (y > height - radius/2 || y  < 0  + radius/2) {
       dy *= -1; 
+      console.log(crack+1)
       r = random(0, 255) // changing colour whenever it bounces off the top or bottom
       g = random(0, 255)
        b = random(0, 255)}

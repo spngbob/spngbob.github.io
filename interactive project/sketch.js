@@ -5,10 +5,6 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-function windowResized() {
-  resizeCanvas(windowWidth, WindowHeight);
-  background(0)
-}
 
 
 let x;
@@ -58,12 +54,8 @@ function bouncyBoi(){
     dy *= -1;}
   
   
-  if (x <= mouseX-50 && x >= mouseX + 50 && y === windowHeight-100){
+  if (x <= mouseX-50 && x >= mouseX + 50 && y > windowHeight-100){
     dy *= -1;
-    dx *= -1;
-
-
-
   }
 
   
@@ -85,11 +77,7 @@ function bouncyBoi(){
         bouncyBoi();
         paddle();
         clear();
-        score = score + 1;
-        
-        
-      }
-    }
+        score = score + 1;}}
   }
   
 
