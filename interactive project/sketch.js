@@ -26,10 +26,6 @@ let paddleWidth = 75;
 let paddleX = (windowWidth-paddleWidth) / 2;
 
 
-function keyPressed(){
-  clear();
-  background(0);
-}
 
 
 function setup() {
@@ -56,8 +52,6 @@ function bouncyBoi(){
    }
   if (y  < 0  + radius/2) {
     dy *= -1;}
-  
-  
   if ( y > windowHeight - radius/2){
     clear();
     background(220, 20, 60);
@@ -65,11 +59,14 @@ function bouncyBoi(){
     textFont('Georgia');
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
     text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
-    keyPressed();
+    if  (keyPressed){
+      clear();
+      background(0);
+    }
   }
-  }
+  
 
-
+} 
 function draw() {   // moving around + bouncing 
   background(0);
   circle(x, y, radius);
