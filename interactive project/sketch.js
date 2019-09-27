@@ -19,7 +19,7 @@ let dy;
 let r = 255;
 let g = 255;
 let b = 255;
-
+let score = 1;
 
 let paddleHeight = 10;
 let paddleWidth = 75;
@@ -31,8 +31,8 @@ let paddleX = (windowWidth-paddleWidth) / 2;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   x = width/2;
-  y = height/2;
-  dx = random(-10, 10);
+  y = height/2; 
+  dx = random(-10, 10);      //setting up speed and 
   dy = random(-10, 10);
 }
 
@@ -47,28 +47,45 @@ function paddle(){
 function bouncyBoi(){
   x += dx;
   y += dy;
+ 
+ 
   if (x > windowWidth - radius/2 || x < 0  + radius/2) {
     dx *= -1;
    }
+  
+  
   if (y  < 0  + radius/2) {
     dy *= -1;}
+  
+  
+  if (x <= mouseX-50 && x >= mouseX + 50 && y === windowHeight-100){
+    dy *= -1;
+    dx *= -1;
+
+
+
+  }
+
+  
   if ( y > windowHeight - radius/2){
     clear();
     background(220, 20, 60);
     textSize(40);
     textFont('Georgia');
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
-    text('press key to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
+    text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
+    text('you have lost ' + score + " game(s)", 200, 200)
     if (keyIsPressed){ // clear
       if (keyCode === 32){
         background(0);
         x = width/2;
         y = height/2;
-        dx = random(1, 5);
-        dy = random(1, 5);
+        dx = random(-10, 10);
+        dy = random(-10, 10);
         bouncyBoi();
         paddle();
         clear();
+        score = score + 1;
         
         
       }
