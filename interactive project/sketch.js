@@ -44,8 +44,8 @@ function paddle(){
 function bouncyBoi(){
   x += dx;
   y += dy;
-  text('score: ' + myScore, 200, 200);
  
+  text('score: ' + myScore, 200, 200);
  
   if (x > windowWidth - radius/2 || x < 0  + radius/2) {
     dx *= -1;
@@ -58,13 +58,12 @@ function bouncyBoi(){
   
   if (x >= mouseX-50 && x <= mouseX + 50 && y > windowHeight-100){
     dy *= -1;
-    dx = random(-20, -5);      //setting up speed and 
-    dy = random(-20, -5);
+
     myScore = myScore+1;
     textSize(40);
     textFont('Georgia');
     stroke('white');
-    
+    text('score: ' + myScore, 200, 200)
   }
 
   
@@ -75,8 +74,7 @@ function bouncyBoi(){
     textFont('Georgia');
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
     text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
-    text('you lost ' + score + " game(s)", 200, 200)
-    myScore = 0;
+    text('you lost' + score + " game(s)", 200, 200)
     if (keyIsPressed){ // clear
       if (keyCode === 32){
         background(0);
@@ -88,6 +86,7 @@ function bouncyBoi(){
         paddle();
         clear();
         score = score +1;}}
+        myScore = 0;
   }
   
 
