@@ -17,7 +17,7 @@ let b = 255;
 let rectS = 100
 let mode = "circle";
 
-let crack = 0;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);

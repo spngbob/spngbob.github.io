@@ -23,15 +23,20 @@ let paddleWidth = 75;
 let paddleX = (windowWidth-paddleWidth) / 2;
 
 
-
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   x = width/2;
   y = height/2; 
-  dx = random(-10, 10);      //setting up speed and 
-  dy = random(-10, 10);
+  dx = random(-15, 15);      //setting up speed and 
+  dy = random(-15, 15);
+  r = random(0, 255);
+  g = random(0, 255);
+  b = random(0, 255);
+
+
+
 }
+
 
 
 
@@ -56,34 +61,39 @@ function bouncyBoi(){
     dy *= -1;}
   
   
-  if (x >= mouseX-50 && x <= mouseX + 50 && y > windowHeight-100){  // adds point when the ball hits the paddle
+  if (x >= mouseX-50 && x <= mouseX + 50 && y > windowHeight-110){  // adds point when the ball hits the paddle
     dy *= -1;
     myScore = myScore+1;
     textSize(40);
     textFont('Georgia');
-    stroke('white');
+    fill(r, g, b);
     text('score: ' + myScore, 200, 200)
   }
 
   
-  if ( y > windowHeight - radius/2){  // sets up fail screen ! 
+  if ( y > windowHeight - 90){  // sets up fail screen ! 
     clear();
     background(220, 20, 60);
     textSize(40);
+    fill("white")
+    noStroke();
     textFont('Georgia');
     text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
     text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
     text('you lost' + score + " game(s)", 200, 200)
+    dy = windowHeight;
     
     
     
     if (keyIsPressed){ // clears screen and resets the paddle, score = 0, and restarts the game
-      if (keyCode === 32){
+      if (keyCode === 32){ // press space and you clear
         background(0);
         x = width/2;
         y = height/2;
         dx = random(-10, 10);
         dy = random(-10, 10);
+        noStroke();
+        fill(r, g, b);
         bouncyBoi();
         paddle();
         clear();
