@@ -1,4 +1,4 @@
-// Interactive Project  - ping pong but lonely
+// State Variable Project  - ping pong but lonely and also BETTER than before
 // Jenna Doucette
 // September 12, 2019 
 //
@@ -15,6 +15,7 @@ let dy;
 let r = 255;
 let g = 255;
 let b = 255;
+let uhoh;
 let score = 1;
 let myScore = 0;
 
@@ -32,6 +33,7 @@ function setup() {
   r = random(0, 255);
   g = random(0, 255);
   b = random(0, 255);
+  uhoh = random(100, 255);
 
 
 
@@ -66,9 +68,14 @@ function bouncyBoi(){
     myScore = myScore+1;
     textSize(40);
     textFont('Georgia');
-    fill(r, g, b);
+    fill(r, g, b, uhoh);
     text('score: ' + myScore, 200, 200)
-  }
+    while (uhoh > 25){
+      uhoh = uhoh - 10;
+    }
+   // /// /// //////////////////////////////////// if (uhoh){
+
+    }
 
   
   if ( y > windowHeight - 90){  // sets up fail screen ! 
@@ -93,7 +100,10 @@ function bouncyBoi(){
         dx = random(-10, 10);
         dy = random(-10, 10);
         noStroke();
-        fill(r, g, b);
+        r = random(0, 255);
+        g = random(0, 255);
+        b = random(0, 255);
+        fill(r, g, b, uhoh);
         bouncyBoi();
         paddle();
         clear();
@@ -111,4 +121,5 @@ function draw() {   // moving around + bouncing
   circle(x, y, radius);
   bouncyBoi();
   paddle();
+
 }
