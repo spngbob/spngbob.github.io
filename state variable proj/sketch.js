@@ -15,13 +15,20 @@ let dy;
 let r = 255;
 let g = 255;
 let b = 255;
-let uhoh;
+
+let filler = ["red", "green", "blue", "pink", "orange", "yellow", "red", "green", "blue", "pink", "purple"]
+
 let score = 1;
 let myScore = 0;
 
 let paddleHeight = 10;
 let paddleWidth = 75;
 let paddleX = (windowWidth-paddleWidth) / 2;
+
+//function changeColour(nums){
+// WORKD ON HTHIS ASDFJAHSDLKFJHSADJF HALDSKFJHA LSDJ HFLAKJDHFALKJDS FAKSLJDFHASDJKFHALKJDFHALKJDSHFLKJSADHFALKSJDHFLAKJSDHFLKAJSDHFKJADSHF
+//}
+
 
 
 function setup() {
@@ -33,10 +40,6 @@ function setup() {
   r = random(0, 255);
   g = random(0, 255);
   b = random(0, 255);
-  uhoh = random(100, 255);
-
-
-
 }
 
 
@@ -68,14 +71,9 @@ function bouncyBoi(){
     myScore = myScore+1;
     textSize(40);
     textFont('Georgia');
-    fill(r, g, b, uhoh);
+    fill(r, g, b);
     text('score: ' + myScore, 200, 200)
-    while (uhoh > 25){
-      uhoh = uhoh - 10;
-    }
-   // /// /// //////////////////////////////////// if (uhoh){
 
-    }
 
   
   if ( y > windowHeight - 90){  // sets up fail screen ! 
@@ -103,7 +101,7 @@ function bouncyBoi(){
         r = random(0, 255);
         g = random(0, 255);
         b = random(0, 255);
-        fill(r, g, b, uhoh);
+        fill(r, g, b);
         bouncyBoi();
         paddle();
         clear();
@@ -111,7 +109,7 @@ function bouncyBoi(){
         myScore = 0;
   }
 } 
-
+}
 
 
 

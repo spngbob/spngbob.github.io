@@ -19,6 +19,7 @@ module.exports = {
         "eqeqeq": ["warn", "always"],
         "no-floating-decimal": ["warn"],
         "brace-style": ["warn", "stroustrup"],
+        "no-var": ["warn"],
 
         // override default options for rules from base configurations
         //"comma-dangle": ["warn", "always"],
