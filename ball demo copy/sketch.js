@@ -1,3 +1,6 @@
+
+
+
 // CANNON BALL DEMO NOT BALL DEMO IT WONT LET ME RENAME
 
 
@@ -48,9 +51,9 @@ function fire(){
   let thisBullet = {
     x: cannonX, 
     y: cannonY,
-    radius: cannonWidth - 2,
+    radius: cannonWidth - 10,
     angle: cannonAngle,
-    speed: 50 };
+    speed: 5 };
   bullets.push(thisBullet); 
 }
 

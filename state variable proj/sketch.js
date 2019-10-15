@@ -67,7 +67,7 @@ function bouncyBoi(){
   }
 
   
-  if ( y > windowHeight - radius){  // sets up fail screen ! 
+  if ( y > windowHeight - 105){  // sets up fail screen ! 
     clear();
     background(220, 20, 60);
     textSize(40);
