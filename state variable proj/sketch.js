@@ -35,7 +35,7 @@ function setup() {
 
 
 function paddle(){
-  rect(mouseX-50, windowHeight-100, 100, 10)
+  rect(mouseX+50, windowHeight-100, 100, 10)
 
 }
 
