@@ -23,6 +23,7 @@ let paddleHeight;
 let paddleWidth;
 let paddleX;
 
+let colours = ["red", "green", "blue", "purple", "yellow", "orange"]
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -117,7 +118,7 @@ function displayCircle() {
     text('score: ' + myScore, 200, 200);
 
   if ( y > windowHeight - 105){
-    mode = "fail";
+    state = "fail";
     }
 }
   fill(0);
@@ -134,7 +135,7 @@ function failure(){
   text('you lost' + score + " game(s)", 200, 200)
   if (keyIsPressed){ // clears screen and resets the paddle, score = 0, and restarts the game
     if (keyCode === 32){
-      background(0);
+      background(colours[random(0-5)]);
       x = width/2;
       y = height/2;
       dx = random(-10, 10);
