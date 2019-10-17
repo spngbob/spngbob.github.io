@@ -46,6 +46,7 @@ function draw() {
     isButtonClicked();
   }
   else if (state === "circle") {
+    
     paddle();
     kingJulien();
     displayCircle();
@@ -54,6 +55,12 @@ function draw() {
     failure();
   }
   
+  else if (state === "you suck"){
+    really();
+    isButtonClicked();
+  }
+
+
 }
 
 
@@ -117,7 +124,7 @@ function displayCircle() {
     textFont('Georgia');
     text('score: ' + myScore, 200, 200);
 
-  if ( y > windowHeight - 105){
+  if ( y > windowHeight - 100){
     state = "fail";
     }
 }
@@ -134,15 +141,39 @@ function failure(){
   text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
   text('you lost' + score + " game(s)", 200, 200)
   if (keyIsPressed){ // clears screen and resets the paddle, score = 0, and restarts the game
-    if (keyCode === 32){
-      background(colours[random(0-5)]);
+    if (score > 1){
+      state = "you suck"}
+    
+    else{ 
+      if (keyCode === 32){
+      state = "menu"
+      myScore = 0;
       x = width/2;
       y = height/2;
-      dx = random(-10, 10);
-      dy = random(-10, 10);
-      bouncyBoi();
-      paddle();
-      clear();
-      score = score +1;}}
-      myScore = 0;
+      dx = random(-15, 15);
+      dy = random(-15, 15);
+      score++;}
+    }
   }
+}
+
+function really(){
+  rectMode(CENTER);
+  fill(255, 105, 105);
+  rect(width/2, height/2 - 100, 400, 150);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  fill(0);
+  text("are you sure you want to keep playing", width/2, height/2 - 100);
+  myScore = 0;
+  score = score+1;
+  x = width/2;
+  y = height/2;
+  dx = random(-15, 15);
+  dy = random(-15, 15);
+  isButtonClicked();
+
+
+
+
+}
