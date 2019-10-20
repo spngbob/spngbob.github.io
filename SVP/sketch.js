@@ -1,9 +1,7 @@
 // State Variable Assigment - kind of uhhhhh ping pong
 // Jenna Doucette
 // October 16, 2019
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+
 
 let x;
 let y;
@@ -12,11 +10,8 @@ let dy;
 let radius = 10;
 let rectSize = 100;
 let state = "menu";
-let couleur;
+let colls = 0;
 
-let r = 255;
-let g = 255;
-let b = 255;
 let fails = 1;
 let myScore = 0;
 
@@ -24,7 +19,7 @@ let paddleHeight;
 let paddleWidth;
 let paddleX;
 
-let colours = ["red", "green", "blue", "purple", "yellow", "orange"]
+let colours = ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red', 'silver', 'teal', 'white', 'yellow'];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -42,20 +37,24 @@ function setup() {
 
 function draw() {
   background(220);
-  if (state === "menu") {
+  if (state === "menu") {    // creates menu + checks if the menu is clicked 
     showMenu();
     isButtonClicked();
   }
-  else if (state === "circle") {    
+  
+
+  else if (state === "circle") {      // creates paddle and circle and makes it move
     paddle();
     kingJulien();
     displayCircle();
   }
-  else if (state === "fail") {
+
+
+  else if (state === "fail") {   // sets up fail screen
     failure();
   }
   
-  else if (state === "you suck"){
+  else if (state === "you suck"){  // asks if youre sure you want to keep playing
     really();
     isButtonClicked();
   }
@@ -64,15 +63,14 @@ function draw() {
 }
 
 
-function paddle(){
+function paddle(){        // paddle creation 
   rect(mouseX-50, windowHeight-100, 100, 10)
-  fill('black');
 
 }
 
 
 function showMenu() {
-  // shows play button
+  // shows play button  
   rectMode(CENTER);
   fill(255, 105, 105);
   rect(width/2, height/2 - 100, 400, 150);
@@ -118,8 +116,10 @@ function displayCircle() {
   if (x >= mouseX-100 && x <= mouseX && y > windowHeight-110){  // adds point when the ball hits the paddle
     dy *= -1;
     myScore = myScore+1;
+    coll = int(random(0, 16));  
+    noStroke(); 
+    fill((colours[coll]));
     textSize(40);
-    fill('white');
     textFont('Georgia');
     text('score: ' + myScore, 200, 200);}
 
@@ -127,17 +127,16 @@ function displayCircle() {
     state = "fail";
     }
   
-  noStroke(); 
-  fill(colours[0]);
-  circle(x, y, radius);
+
   
+  circle(x, y, radius);
 }
 
-function failure(){
+function failure(){    //sets yp fail screen but behind the curtain 
   clear();
   background(220, 20, 60);
   textSize(40);
-  fill("black");
+  fill("black")
   textFont('Georgia');
   text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
   text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
@@ -149,11 +148,11 @@ function failure(){
       myScore = 0;
       x = width/2;
       y = height/2; 
-      dx = random(5, 15);
-      dy = random(5, 15);
+      dx = random(5, 10);
+      dy = random(5, 10);
       fails = fails + 1;
     
-      if (fails > 1){
+      if (fails > 5){         // after losing 5 games it asks ifyou wanna keep playing 
         state = "you suck"
       }
   
@@ -164,7 +163,7 @@ function failure(){
   }
 }
 
-function really(){
+function really(){            // are you sure you want to keep playing button 
   rectMode(CENTER);
   fill(255, 105, 105);
   rect(width/2, height/2 - 100, 400, 150);
