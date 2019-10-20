@@ -12,6 +12,7 @@ let dy;
 let radius = 10;
 let rectSize = 100;
 let state = "menu";
+let couleur;
 
 let r = 255;
 let g = 255;
@@ -84,9 +85,8 @@ function showMenu() {
 function isButtonClicked() {
   if (mouseIsPressed) {
     // check if the play button is pressed
-    if (mouseX > width/2 - 200 && mouseX < width/2 + 200 &&
-        mouseY > height/2 - 100 - 75 && mouseY < height/2 - 100 + 75) {
-          state = "circle";
+    if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/2 - 100 - 75 && mouseY < height/2 - 100 + 75) {
+        state = "circle";
     }
   }
 }
@@ -121,21 +121,23 @@ function displayCircle() {
     textSize(40);
     fill('white');
     textFont('Georgia');
-    text('score: ' + myScore, 200, 200);
+    text('score: ' + myScore, 200, 200);}
 
   if ( y > windowHeight - 100){
     state = "fail";
     }
-  }
-
-  fill(0);
+  
+  noStroke(); 
+  fill(colours[0]);
   circle(x, y, radius);
+  
 }
 
 function failure(){
   clear();
   background(220, 20, 60);
   textSize(40);
+  fill("black");
   textFont('Georgia');
   text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
   text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
@@ -143,7 +145,7 @@ function failure(){
   
   
   if (keyIsPressed){ // clears screen and resets the paddle, score = 0, and restarts the game
-    if (keycode === 32){
+    if (keyCode === 32){
       myScore = 0;
       x = width/2;
       y = height/2; 
@@ -173,3 +175,6 @@ function really(){
   textSize(40);
   isButtonClicked();
 }
+
+
+
