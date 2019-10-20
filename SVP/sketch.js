@@ -16,7 +16,7 @@ let state = "menu";
 let r = 255;
 let g = 255;
 let b = 255;
-let score = 1;
+let fails = 1;
 let myScore = 0;
 
 let paddleHeight;
@@ -45,8 +45,7 @@ function draw() {
     showMenu();
     isButtonClicked();
   }
-  else if (state === "circle") {
-    
+  else if (state === "circle") {    
     paddle();
     kingJulien();
     displayCircle();
@@ -139,9 +138,11 @@ function failure(){
   textFont('Georgia');
   text('YOU FAILED', windowWidth/2, windowHeight/2, 500, 500);
   text('press space to continue', windowWidth/2-100, windowHeight/2+200, 500, 500)
-  text('you lost' + score + " game(s)", 200, 200)
+  text('you lost ' + fails + " game(s)", 200, 200)
+  
+  
   if (keyIsPressed){ // clears screen and resets the paddle, score = 0, and restarts the game
-    if (score > 1){
+    if (fails > 10 ){
       state = "you suck"}
     
     else{ 
@@ -152,7 +153,7 @@ function failure(){
       y = height/2;
       dx = random(5, 15);
       dy = random(5, 15);
-      score++;}
+      fails = fails + 1;}
     }
   }
 }
@@ -166,7 +167,7 @@ function really(){
   fill(0);
   text("are you sure you want to keep playing", width/2, height/2 - 100);
   myScore = 0;
-  score = score+1;
+  fails = fails+1;
   x = width/2;
   y = height/2;
   dx = random(5, 15);
