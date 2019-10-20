@@ -15,7 +15,7 @@ let dy;
 let r = 255;
 let g = 255;
 let b = 255;
-let score = 1;
+let fails = 1;
 let myScore = 0;
 
 let paddleHeight = 10;
@@ -87,7 +87,7 @@ function bouncyBoi(){
         bouncyBoi();
         paddle();
         clear();
-        score = score +1;}}
+        fails = fails +1;}}
         myScore = 0;
   }
 } 

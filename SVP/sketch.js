@@ -29,8 +29,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   x = width/2;
   y = height/2;
-  dx = random(-15, 15);
-  dy = random(-15, 15);
+  dx = random(5, 10);
+  dy = random(5, 10);
   background(100);
   let paddleHeight = 10;
   let paddleWidth = 75;
@@ -150,8 +150,8 @@ function failure(){
       myScore = 0;
       x = width/2;
       y = height/2;
-      dx = random(-15, 15);
-      dy = random(-15, 15);
+      dx = random(5, 15);
+      dy = random(5, 15);
       score++;}
     }
   }
@@ -169,11 +169,8 @@ function really(){
   score = score+1;
   x = width/2;
   y = height/2;
-  dx = random(-15, 15);
-  dy = random(-15, 15);
+  dx = random(5, 15);
+  dy = random(5, 15);
+  textSize(40);
   isButtonClicked();
-
-
-
-
 }
