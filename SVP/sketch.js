@@ -105,10 +105,10 @@ function kingJulien() {
 function displayCircle() {
   // bounce if needed
   text('score: ' + myScore, 200, 200); // explains your score
- 
+
   if (x > windowWidth - radius/2 || x < 0  + radius/2) { //sets up boucing off sides
     dx *= -1; 
-   }
+  }
   
   
   if (y  < 0  + radius/2) { // bounces off top
@@ -126,7 +126,8 @@ function displayCircle() {
   if ( y > windowHeight - 100){
     state = "fail";
     }
-}
+  }
+
   fill(0);
   circle(x, y, radius);
 }
@@ -142,18 +143,21 @@ function failure(){
   
   
   if (keyIsPressed){ // clears screen and resets the paddle, score = 0, and restarts the game
-    if (fails > 10 ){
-      state = "you suck"}
-    
-    else{ 
-      if (keyCode === 32){
-      state = "menu"
+    if (keycode === 32){
       myScore = 0;
       x = width/2;
-      y = height/2;
+      y = height/2; 
       dx = random(5, 15);
       dy = random(5, 15);
-      fails = fails + 1;}
+      fails = fails + 1;
+    
+      if (fails > 1){
+        state = "you suck"
+      }
+  
+      else{ 
+        state = "menu"
+      }
     }
   }
 }
@@ -166,12 +170,6 @@ function really(){
   textSize(20);
   fill(0);
   text("are you sure you want to keep playing", width/2, height/2 - 100);
-  myScore = 0;
-  fails = fails+1;
-  x = width/2;
-  y = height/2;
-  dx = random(5, 15);
-  dy = random(5, 15);
   textSize(40);
   isButtonClicked();
 }
