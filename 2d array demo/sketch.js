@@ -4,7 +4,7 @@ let grid = [];
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 800);
   grid = createArray(20, 20);
 }
 
