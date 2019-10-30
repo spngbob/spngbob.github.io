@@ -1,9 +1,10 @@
 // conways game of life
 
 let grid;
-let rows = 150;
-let cols = 150;
-let autoplay = false;
+let rows = 25;
+let cols = 25;
+let autoPlay = false;
+
 function setup() {
   if (windowWidth > windowHeight) {
     createCanvas(windowHeight, windowHeight);
@@ -17,6 +18,11 @@ function setup() {
 function draw() {
   background(220);
   displayGrid(grid, rows, cols);
+  if (autoPlay) {
+    if (frameCount % 5 === 0) {
+      update();
+    }
+  }
 }
 
 function windowResized() {
@@ -37,6 +43,9 @@ function keyTyped() {
   }
   if (key === " ") {
     update();
+  }
+  if (key === "a") {
+    autoPlay = !autoPlay;
   }
 }
 
