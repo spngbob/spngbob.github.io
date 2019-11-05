@@ -2,8 +2,6 @@
 
 let grid = [];
 
-
-
 function setup() {
   createCanvas(800, 800);
   grid = createArray(20, 20);
