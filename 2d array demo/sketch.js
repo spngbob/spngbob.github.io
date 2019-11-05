@@ -3,6 +3,7 @@
 let grid = [];
 
 
+
 function setup() {
   createCanvas(800, 800);
   grid = createArray(20, 20);
@@ -17,12 +18,6 @@ function displayGrid(theGrid){
   // assumes the grid is a square 
   for (let y = 0; y < theGrid[0].length; y++){
     for (let x = 0; x < theGrid[0].length; x++){
-      if (theGrid[x][y] === 0){
-        fill(255);
-      }
-      else{
-        fill(0);
-      }
       let cellSize = width/ theGrid[0].length;
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
     }
