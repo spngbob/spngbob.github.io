@@ -84,37 +84,59 @@ function RedwinScreen() {
   background(255);
   fill(0);
   textSize(85);
-  textAlign(CENTER, CENTER);
-  text("RED WIN!", width/2, height/2);
+  if (windowWidth > windowHeight) {
+    textAlign(windowHeight/2, windowHeight/2);
+    text("RED WIN!", windowHeight/2, windowHeight/2);
+  }
+  else {
+    textAlign(windowWidth/2, windowWidth/2);
+    text("RED WIN!", windowWidth/2, windowWidth/2);  }
 }
 
 function BluewinScreen() {
   background(255);
   fill(0);
   textSize(85);
-  textAlign(CENTER, CENTER);
-  text("BLUE WIN!", width/2, height/2);
+  if (windowWidth > windowHeight) {
+    textAlign(windowHeight/2, windowHeight/2);
+    text("BLUE WIN!", windowHeight/2, windowHeight/2);
+  }
+  else {
+    textAlign(windowWidth/2, windowWidth/2);
+    text("BLUE WIN!", windowWidth/2, windowWidth/2);  }
 }
 
 function tieScreen() {
   background(255);
   fill(0);
   textSize(85);
-  textAlign(CENTER, CENTER);
-  text("WOW NEITHER OF YOU WIN!", width/2, height/2);
+  if (windowWidth > windowHeight) {
+    textAlign(windowHeight/2, windowHeight/2);
+    text("WOW NEITHER OF YOU WIN!", windowHeight/2, windowHeight/2);
+  }
+  else {
+    textAlign(windowWidth/2, windowWidth/2);
+    text("WOW NEITHER OF YOU WIN!", windowWidth/2, windowWidth/2);  }
 }
 
 
-// function showMenu() {
-//   // shows play button  
-//   rectMode(CENTER);
-//   fill(255, 105, 105);
-//   rect(windowWidth/2, windowHeight/2 - 100, 400, 150);
-//   textAlign(CENTER, CENTER);
-//   textSize(50);
-//   fill(0);
-//   text("PLAY", windowWidth/2, windowHeight/2 - 100);
-// }
+function showMenu() {
+  // shows play button 
+  if (windowWidth > windowHeight) {
+    fill(255, 105, 105);
+    rect(windowHeight/2-(windowHeight/4), windowHeight/2 - (windowHeight/4), windowHeight/2, windowHeight/5);
+    textSize(windowHeight*0.15);
+    fill(0);
+    text("PLAY", windowHeight/2, windowHeight/2);
+  }
+  else {
+    fill(255, 105, 105);
+    rect(windowWidth/2-(windowWidth/4), windowWidth/2-100 -(windowWidth/4), windowWidth/2, windowWidth/5);
+    textSize(windowWidth*0.15);
+    fill(0);
+    text("PLAY", windowWidth/2, windowWidth/2);
+}
+}
 
 // function isButtonClicked() {
 //   if (mouseIsPressed) {
@@ -123,13 +145,4 @@ function tieScreen() {
 //         state = "red";
 //     }
 //   }
-// }
-
-
-
-NEED TO FIGURE OUT BUTTON CUZ IT AINT WORKIN MAN FIGURE IT OUTTTT
-YEEHAW
-
-
-
-YEEEEEEEEEEEEEEEEEEEHAW
+// 
