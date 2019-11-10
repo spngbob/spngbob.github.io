@@ -7,37 +7,50 @@
 //types of states ========== red, blu, rin, bin, menu, tie
 
 let grid = [];
+let picked = [
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0]
+];
+let turns = 0;
+
 
 
 let rows;
 let cols;
 let cellSize;
 
-let p1; // red player
-let p2; // blue plaer
+let p1; // red player or ONE
+let p2; // blue plaer or NEGATIVE ONE
 
 let state = "p1";
 
 function setup() {
-  createCanvas(windowHeight, windowWidth);
+  if (windowWidth > windowHeight) {
+    createCanvas(windowHeight, windowHeight);
+  }
+
+  else {
+    createCanvas(windowWidth, windowWidth);
+  }  
   grid = createArray(3,3);
-}
-
-
-function draw() {
   displayGrid(grid);
+
 }
 
+function draw(){
+  
+
+}
 
 
 
 function displayGrid(theGrid){ 
 // makes square playing "board"
+  let cellSize = width/ theGrid.length;
   for (let y = 0; y < theGrid[0].length; y++){
-    for (let x = 0; x < theGrid[0].length; x++){
-      let cellSize = width/ theGrid.length;
+    for (let x = 0; x < theGrid[0].length;x++){
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
-      fill(125);
     }
   }
 }
@@ -48,11 +61,10 @@ function displayGrid(theGrid){
 
 function createArray(cols, rows){ // fills in empty grid with an array.
   let someArray = [];
-  for (let i = 0; i < cols; i++){
+  for (let i = 0; i < rows; i++){
     someArray.push([]);
-    for (let j = 0; j < rows; j++){
+    for (let j = 0; j < cols; j++){
       someArray[i].push(0);
-      
     }
   }
   return someArray;
@@ -77,11 +89,27 @@ function windowResized() {
 
 
 function mousePressed(){
-  let xcord = floor(mouseX / cellSize);
-  let ycord = floor(mouseY / cellSize);
-  if (state === "p1"){
-    fill("red");  
+  let cellSize = width/ grid.length;
+  let xCoord = floor(mouseX / cellSize);
+  let yCoord = floor(mouseY / cellSize);
+  console.log(xCoord, yCoord);
+  if (state === "p1") {
+    if (picked[yCoord][xCoord] === 0){
+      fill(255, 0, 0, 50);
+      noStroke();
+      rect(xCoord*cellSize, yCoord *cellSize, cellSize, cellSize);
+      picked[yCoord][xCoord] = 1;
+      state = "p2";
+    }
+    
   }
-
-
+  else if (state === "p2"){
+    if (picked[yCoord][xCoord] === 0){
+      fill(0, 0, 255, 50);
+      noStroke();
+      rect(xCoord*cellSize, yCoord *cellSize, cellSize, cellSize);
+      picked[yCoord][xCoord] = -1;
+      state = "p1";
+    } 
+  }
 }
