@@ -14,10 +14,11 @@ let cellSize;
 let p1;
 let p2;
 
+let state = "p1";
 
 function setup() {
   createCanvas(windowHeight, windowWidth);
-  background(220);
+  background(0);
   grid = createArray(3,3);
 }
 
