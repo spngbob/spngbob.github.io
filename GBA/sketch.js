@@ -7,27 +7,25 @@
 //types of states ========== red, blu, rin, bin, menu, tie
 
 let grid = [];
+
+
 let rows;
 let cols;
 let cellSize;
 
-let p1;
-let p2;
+let p1; // red player
+let p2; // blue plaer
 
 let state = "p1";
 
 function setup() {
   createCanvas(windowHeight, windowWidth);
-  background(0);
   grid = createArray(3,3);
 }
 
 
-
-
 function draw() {
-  background(220);
-  displayGrid(grid)
+  displayGrid(grid);
 }
 
 
@@ -37,7 +35,7 @@ function displayGrid(theGrid){
 // makes square playing "board"
   for (let y = 0; y < theGrid[0].length; y++){
     for (let x = 0; x < theGrid[0].length; x++){
-      let cellSize = width/ theGrid[0].length;
+      let cellSize = width/ theGrid.length;
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
       fill(125);
     }
@@ -73,4 +71,17 @@ function windowResized() {
   else {
     createCanvas(windowWidth, windowWidth);
   }
+}
+
+
+
+
+function mousePressed(){
+  let xcord = floor(mouseX / cellSize);
+  let ycord = floor(mouseY / cellSize);
+  if (state === "p1"){
+    fill("red");  
+  }
+
+
 }
