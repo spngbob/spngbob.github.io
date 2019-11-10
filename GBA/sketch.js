@@ -3,26 +3,34 @@
 // Date
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
-
+// - describe what you did to take this project "above and beyond" maybe a computer player
 //types of states ========== red, blu, rin, bin, menu, tie
 
 let grid = [];
-let rows = 3;
-let cols = 3;
+let rows;
+let cols;
 let cellSize;
 
+let p1;
+let p2;
 
 
 function setup() {
+  createCanvas(windowHeight, windowWidth);
   background(220);
   grid = createArray(3,3);
 }
 
+
+
+
 function draw() {
   background(220);
-  displayGrid(grid);
+  displayGrid(grid)
 }
+
+
+
 
 function displayGrid(theGrid){ 
 // makes square playing "board"
@@ -35,24 +43,33 @@ function displayGrid(theGrid){
   }
 }
 
+
+
+
+
+function createArray(cols, rows){ // fills in empty grid with an array.
+  let someArray = [];
+  for (let i = 0; i < cols; i++){
+    someArray.push([]);
+    for (let j = 0; j < rows; j++){
+      someArray[i].push(0);
+      
+    }
+  }
+  return someArray;
+}
+
+
+
+
+
 function windowResized() {
 // deals with people being people and resizing the screen all the time
   if (windowWidth > windowHeight) {
     createCanvas(windowHeight, windowHeight);
   }
+
   else {
     createCanvas(windowWidth, windowWidth);
   }
-}
-
-function createArray(cols, rows){
-  let someArray = [];
-  for (let i = 0; i < cols; i++){
-    someArray.push([]);
-    for (let j = 0; j < rows; j++){
-        someArray[i].push(0);
-        
-      }
-    }
-  return someArray;
 }
