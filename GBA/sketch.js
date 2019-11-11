@@ -39,8 +39,9 @@ function setup() {
 }
 
 function draw(){
-  
-
+  if (turns > 9){
+    gameover();
+  }
 }
 
 
@@ -72,8 +73,6 @@ function createArray(cols, rows){ // fills in empty grid with an array.
 
 
 
-
-
 function windowResized() {
 // deals with people being people and resizing the screen all the time
   if (windowWidth > windowHeight) {
@@ -101,7 +100,6 @@ function mousePressed(){
       picked[yCoord][xCoord] = 1;
       state = "p2";
     }
-    
   }
   else if (state === "p2"){
     if (picked[yCoord][xCoord] === 0){
@@ -112,4 +110,12 @@ function mousePressed(){
       state = "p1";
     } 
   }
+  turns++;
 }
+
+
+// function gameover(winner){
+
+
+
+// }
