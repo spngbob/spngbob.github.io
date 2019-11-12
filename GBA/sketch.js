@@ -13,17 +13,21 @@ let picked = [
   [0, 0, 0]
 ];
 let turns = 0;
-let whoWon;
+let whoWon = " ";
+
 
 let rows;
 let cols;
 let cellSize;
 
-let p1; // red player or ONE
-let p2; // blue plaer or NEGATIVE ONE
-let tie;
+
+let p1 = "red"; // red player or ONE
+let p2 = "blue"; // blue plaer or NEGATIVE ONE
+let tie = "purple";
+
 
 let state = "p1";
+
 
 function setup() {
   if (windowWidth > windowHeight) {
@@ -38,21 +42,9 @@ function setup() {
 }
 
 function draw(){
-  if (turns === 9){
-    if (grid[0][0] + grid[0][1] + grid[0][2] === 3 || grid[1][0] + grid[1][1] + grid[1][2] === 3 || grid[2][0] + grid[2][1] + grid[2][2] === 3 || grid[0][0] + grid[1][1] + grid[2][2] === 3 || grid[0][2] + grid[1][1] + grid[2][0] === 3){
-      whoWon = p1;
-      return whoWon; 
-    }
-    else if (grid[0][0] + grid[0][1] + grid[0][2] === -3 || grid[1][0] + grid[1][1] + grid[1][2] === -3 || grid[2][0] + grid[2][1] + grid[2][2] === -3 || grid[0][0] + grid[1][1] + grid[2][2] === -3 || grid[0][2] + grid[1][1] + grid[2][0] === -3){
-      whoWon = p2;
-      return whoWon; 
-    }
-    else{
-      whoWon = tie;
-      return whoWon;
-    }
-    gameover(whoWon);
-  }
+  
+  //gameover(whoWon);
+  
 }
 
 
@@ -110,9 +102,11 @@ function mousePressed(){
       rect(xCoord*cellSize, yCoord *cellSize, cellSize, cellSize);
       picked[yCoord][xCoord] = 1;
       state = "p2";
+      checkWinner();
       turns++;
     }
   }
+
   else if (state === "p2"){ // player two gets to put colour down! 
     if (picked[yCoord][xCoord] === 0){
       fill(0, 0, 255, 50);
@@ -120,12 +114,24 @@ function mousePressed(){
       rect(xCoord*cellSize, yCoord *cellSize, cellSize, cellSize);
       picked[yCoord][xCoord] = -1;
       state = "p1";
+      checkWinner();
       turns++;
     } 
   }
-
 }
 
+function checkWinner(){
+  
+  if (grid[0][0] + grid[0][1] + grid[0][2] === 3 || grid[1][0] + grid[1][1] + grid[1][2] === 3 || grid[2][0] + grid[2][1] + grid[2][2] === 3 || grid[0][0] + grid[1][1] + grid[2][2] === 3 || grid[0][2] + grid[1][1] + grid[2][0] === 3){
+    whoWon = p1;
+  }
+  else if (grid[0][0] + grid[0][1] + grid[0][2] === -3 || grid[1][0] + grid[1][1] + grid[1][2] === -3 || grid[2][0] + grid[2][1] + grid[2][2] === -3 || grid[0][0] + grid[1][1] + grid[2][2] === -3 || grid[0][2] + grid[1][1] + grid[2][0] === -3){
+    whoWon = p2;
+  }
+  else if (turns === 9){
+    whoWon = tie;
+  }
+}
 
 function gameover(winner){
   clear();
@@ -141,5 +147,8 @@ function gameover(winner){
 
   rectMode(CENTER, CENTER);
   rect(width/3, height/3, height/3, width/3);
-  console.log(whoWon);
+  console.log("whoWon", whoWon);
 }
+
+
+
