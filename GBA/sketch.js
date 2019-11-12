@@ -43,7 +43,6 @@ function setup() {
 
 function draw(){
   
-  //gameover(whoWon);
   
 }
 
@@ -91,10 +90,11 @@ function windowResized() {
 
 
 function mousePressed(){
+
   let cellSize = width/ grid.length;
   let xCoord = floor(mouseX / cellSize);
   let yCoord = floor(mouseY / cellSize);
-  console.log(xCoord, yCoord);
+
   if (state === "p1") { // player one gets to put colour down
     if (picked[yCoord][xCoord] === 0){
       fill(255, 0, 0, 50);
@@ -123,13 +123,17 @@ function mousePressed(){
 function checkWinner(){
   
   if (picked[0][0] + picked[0][1] + picked[0][2] === 3 || picked[1][0] + picked[1][1] + picked[1][2] === 3 || picked[2][0] + picked[2][1] + picked[2][2] === 3 || picked[0][0] + picked[1][1] + picked[2][2] === 3 || picked[0][2] + picked[1][1] + picked[2][0] === 3 || picked[0][0] + picked[1][0] + picked[2][0] === 3 || picked[0][1] + picked[1][1] + picked[2][1] === 3 || picked[0][2] + picked[1][2] + picked[2][2] === 3){
-    whoWon = p1;
+    gameover(p1);
+  // checks all possible win situations for red or player 1
+  
   }
   else if (picked[0][0] + picked[0][1] + picked[0][2] === -3 || picked[1][0] + picked[1][1] + picked[1][2] === -3 || picked[2][0] + picked[2][1] + picked[2][2] === -3 || picked[0][0] + picked[1][1] + picked[2][2] === -3 || picked[0][2] + picked[1][1] + picked[2][0] === -3 || picked[0][0] + picked[1][0] + picked[2][0] === -3 || picked[0][1] + picked[1][1] + picked[2][1] === -3 || picked[0][2] + picked[1][2] + picked[2][2] === -3){
-    whoWon = p2;
+    gameover(p2);
+    // checks all possible win situations for blue or player 2
   }
   else if (turns === 8){
-    whoWon = tie;
+    gameover(tie);
+    //says its a tie if neither of those work out
   }
 }
 
@@ -138,16 +142,16 @@ function gameover(winner){
   if (winner === p1){
     fill("red");
   }
+
   else if (winner === p2){
     fill("blue");
   }
+  
   else if(winner === tie){
     fill("purple");
   }
 
-  rectMode(CENTER, CENTER);
   rect(width/3, height/3, height/3, width/3);
-  console.log("whoWon", whoWon);
 }
 
 
