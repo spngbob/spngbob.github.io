@@ -122,13 +122,13 @@ function mousePressed(){
 
 function checkWinner(){
   
-  if (grid[0][0] + grid[0][1] + grid[0][2] === 3 || grid[1][0] + grid[1][1] + grid[1][2] === 3 || grid[2][0] + grid[2][1] + grid[2][2] === 3 || grid[0][0] + grid[1][1] + grid[2][2] === 3 || grid[0][2] + grid[1][1] + grid[2][0] === 3){
+  if (picked[0][0] + picked[0][1] + picked[0][2] === 3 || picked[1][0] + picked[1][1] + picked[1][2] === 3 || picked[2][0] + picked[2][1] + picked[2][2] === 3 || picked[0][0] + picked[1][1] + picked[2][2] === 3 || picked[0][2] + picked[1][1] + picked[2][0] === 3 || picked[0][0] + picked[1][0] + picked[2][0] === 3 || picked[0][1] + picked[1][1] + picked[2][1] === 3 || picked[0][2] + picked[1][2] + picked[2][2] === 3){
     whoWon = p1;
   }
-  else if (grid[0][0] + grid[0][1] + grid[0][2] === -3 || grid[1][0] + grid[1][1] + grid[1][2] === -3 || grid[2][0] + grid[2][1] + grid[2][2] === -3 || grid[0][0] + grid[1][1] + grid[2][2] === -3 || grid[0][2] + grid[1][1] + grid[2][0] === -3){
+  else if (picked[0][0] + picked[0][1] + picked[0][2] === -3 || picked[1][0] + picked[1][1] + picked[1][2] === -3 || picked[2][0] + picked[2][1] + picked[2][2] === -3 || picked[0][0] + picked[1][1] + picked[2][2] === -3 || picked[0][2] + picked[1][1] + picked[2][0] === -3 || picked[0][0] + picked[1][0] + picked[2][0] === -3 || picked[0][1] + picked[1][1] + picked[2][1] === -3 || picked[0][2] + picked[1][2] + picked[2][2] === -3){
     whoWon = p2;
   }
-  else if (turns === 9){
+  else if (turns === 8){
     whoWon = tie;
   }
 }
