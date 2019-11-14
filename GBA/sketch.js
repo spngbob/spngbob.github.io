@@ -1,10 +1,7 @@
-// gonna make that tic tac toe finally
+//TIC TAC TOE
 // Jenna Doucette
-// Date
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond" maybe a computer player
-//types of states ========== red, blu, rin, bin, menu, tie
+// NOVEMBER 12th, 2019  
+
 
 let grid = [];
 let picked = [
@@ -29,7 +26,7 @@ let tie = "purple";
 let state = "p1";
 
 
-function setup() {
+function setup() { //creates canvas that works for square board. 
   if (windowWidth > windowHeight) {
     createCanvas(windowHeight, windowHeight);
   }
@@ -38,15 +35,27 @@ function setup() {
   }  
   grid = createArray(3,3);
   displayGrid(grid);
-
 }
 
 function draw(){
-  
-  //gameover(whoWon);
-  
+  if (state === "endgame"){
+    if (keyIsPressed === true){ //restarts game 
+      console.log("beans"); 
+      clear();
+      fill("white");  
+      turns = 0;
+      state ="p1";
+      grid = [];
+      picked = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ];
+      grid = createArray(3,3);
+      displayGrid(grid);
+    }
+  }
 }
-
 
 
 function displayGrid(theGrid){ 
@@ -58,9 +67,6 @@ function displayGrid(theGrid){
     }
   }
 }
-
-
-
 
 
 function createArray(cols, rows){ // fills in empty grid with an array.
@@ -75,26 +81,12 @@ function createArray(cols, rows){ // fills in empty grid with an array.
 }
 
 
-
-function windowResized() {
-// deals with people being people and resizing the screen all the time
-  if (windowWidth > windowHeight) {
-    createCanvas(windowHeight, windowHeight);
-  }
-
-  else {
-    createCanvas(windowWidth, windowWidth);
-  }
-}
-
-
-
-
 function mousePressed(){
+
   let cellSize = width/ grid.length;
-  let xCoord = floor(mouseX / cellSize);
+  let xCoord = floor(mouseX / cellSize);  //sets values for the individual squares
   let yCoord = floor(mouseY / cellSize);
-  console.log(xCoord, yCoord);
+
   if (state === "p1") { // player one gets to put colour down
     if (picked[yCoord][xCoord] === 0){
       fill(255, 0, 0, 100);
@@ -120,34 +112,54 @@ function mousePressed(){
   }
 }
 
+
 function checkWinner(){
   
-  if (picked[0][0] + picked[0][1] + picked[0][2] === 3 || picked[1][0] + picked[1][1] + picked[1][2] === 3 || picked[2][0] + picked[2][1] + picked[2][2] === 3 || picked[0][0] + picked[1][1] + picked[2][2] === 3 || picked[0][2] + picked[1][1] + picked[2][0] === 3 || picked[0][0] + picked[1][0] + picked[2][0] === 3 || picked[0][1] + picked[1][1] + picked[2][1] === 3 || picked[0][2] + picked[1][2] + picked[2][2] === 3){
-    whoWon = p1;
+  if (picked[0][0] + picked[0][1] + picked[0][2] === 3 || picked[1][0] + picked[1][1] + picked[1][2] === 3 || 
+    picked[2][0] + picked[2][1] + picked[2][2] === 3 || picked[0][0] + picked[1][1] + picked[2][2] === 3 || 
+    picked[0][2] + picked[1][1] + picked[2][0] === 3 || picked[0][0] + picked[1][0] + picked[2][0] === 3 || 
+    picked[0][1] + picked[1][1] + picked[2][1] === 3 || picked[0][2] + picked[1][2] + picked[2][2] === 3){
+
+    gameover(p1);
+  // checks all possible win situations for red or player 1
+  
   }
-  else if (picked[0][0] + picked[0][1] + picked[0][2] === -3 || picked[1][0] + picked[1][1] + picked[1][2] === -3 || picked[2][0] + picked[2][1] + picked[2][2] === -3 || picked[0][0] + picked[1][1] + picked[2][2] === -3 || picked[0][2] + picked[1][1] + picked[2][0] === -3 || picked[0][0] + picked[1][0] + picked[2][0] === -3 || picked[0][1] + picked[1][1] + picked[2][1] === -3 || picked[0][2] + picked[1][2] + picked[2][2] === -3){
-    whoWon = p2;
+  else if (picked[0][0] + picked[0][1] + picked[0][2] === -3 || picked[1][0] + picked[1][1] + picked[1][2] === -3 ||  
+    picked[2][0] + picked[2][1] + picked[2][2] === -3 || picked[0][0] + picked[1][1] + picked[2][2] === -3 ||
+    picked[0][2] + picked[1][1] + picked[2][0] === -3 || picked[0][0] + picked[1][0] + picked[2][0] === -3 || 
+    picked[0][1] + picked[1][1] + picked[2][1] === -3 || picked[0][2] + picked[1][2] + picked[2][2] === -3){
+
+    gameover(p2);
+    // checks all possible win situations for blue or player 2
   }
   else if (turns === 8){
-    whoWon = tie;
+    gameover(tie);
+    //says its a tie if neither of those work out
   }
 }
 
-function gameover(winner){
+
+function gameover(winner){ ///end screen! 
   clear();
+  state = "endgame"; 
   if (winner === p1){
     fill("red");
-  }
+  } 
+
   else if (winner === p2){
     fill("blue");
   }
+  
   else if(winner === tie){
-    fill("purple");
+    fill(255, 0, 255, 100);
   }
 
-  rectMode(CENTER, CENTER);
   rect(width/3, height/3, height/3, width/3);
-  console.log("whoWon", whoWon);
+  textAlign(CENTER, CENTER);
+  textSize((width+ height)/30);
+  fill(0);
+  text("Who Won?", width/2, height/2);
+  
 }
 
 
