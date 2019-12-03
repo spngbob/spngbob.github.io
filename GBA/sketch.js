@@ -90,7 +90,6 @@ function mousePressed(){
   if (state === "p1") { // player one gets to put colour down
     if (picked[yCoord][xCoord] === 0){
       fill(255, 0, 0, 100);
-      noStroke();
       rect(xCoord*cellSize, yCoord *cellSize, cellSize, cellSize);
       picked[yCoord][xCoord] = 1;
       state = "p2";
@@ -102,7 +101,6 @@ function mousePressed(){
   else if (state === "p2"){ // player two gets to put colour down! 
     if (picked[yCoord][xCoord] === 0){
       fill(0, 0, 255, 100);
-      noStroke();
       rect(xCoord*cellSize, yCoord *cellSize, cellSize, cellSize);
       picked[yCoord][xCoord] = -1;
       state = "p1";
